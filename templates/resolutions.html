@@ -1,14 +1,75 @@
 <html>
 <head>
-<style>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <style>
 
-</style>
+        .resolutions
+        {
+            width: 80%;
+            color: #fff;
+            padding: 10%;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .pink {
+            background-color: #e54164;
+        }
+
+        .yellow {
+            background-color: #faa719;
+        }
+
+        .lightblue {
+            background-color: #7acdcc;
+        }
+
+        .darkblue {
+            background-color: #1c2e41;
+        }
+
+        #count {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        #resolution {
+            font-size: 6em;
+        }
+
+        #footer {
+            font-size: 2em;
+            margin-top: 1em;
+        }
+
+    </style>
 </head>
-<body>
+<body class="lightblue">
+    <div class="resolutions">
 
-    #{{ resolution_id }} out of {{ resolutions_count }}
-    <br>
-    {{ resolution.text }}
+        <div id="count">
+        # {{ resolution_id }} out of {{ resolutions_count }}
+        </div>
+
+        <div id="resolution">
+            {{ resolution.text }}
+        </div>
+
+        <div id="footer">
+            What's your #digitalresolution? Text yours to ###-###-####
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        // TODO: Apply random background color class (.pink, .yellow, .lightblue, .darkblue) on load
+
+        // TODO: Page refresh every 30s
+
+        // TODO: Devise a way to rotate through all of the logos for host groups
+
+    </script>
 
 </body>
 </html>
