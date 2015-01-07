@@ -41,9 +41,17 @@
             margin-top: 1em;
         }
 
+        .logo {
+            max-width: 100%;
+        }
+
+        .logo-container {
+            text-align: center;
+        }
+
     </style>
 </head>
-<body class="lightblue">
+<body>
     <div class="resolutions">
 
         <div id="count">
@@ -63,12 +71,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script type="text/javascript">
-        // TODO: Apply random background color class (.pink, .yellow, .lightblue, .darkblue) on load
+        $( document ).ready(function() {
 
-        // TODO: Page refresh every 30s
+            // Page refresh every 30s
+            window.setTimeout(function () { location.reload(true) }, 30000);
 
-        // TODO: Devise a way to rotate through all of the logos for host groups
+            // Rotate through all of the logos for host groups
+            var showLogo = Math.floor(Math.random() * 100);
 
+            // 15% of the time, show a logo instead of a resolution
+            if (showLogo <= 15) {
+                var logos = [
+                'http://shannonvturner.com/images/hearmecode_logo.png', // Hear Me Code
+                'http://shannonvturner.com/images/codeforprogress_logo.png', // Code for Progress
+                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/wwcdc.png', // Women Who Code
+                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/lwt.jpeg', // Lesbians Who Tech
+                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/images/ncwit.png', // GEMS/NCWIT
+                'https://raw.githubusercontent.com/dcfemtech/dcfemtech.github.io/master/icons/dcft-full.png' // DCFemTech
+                ]
+                var logo = logos[Math.floor(Math.random() * 6)];
+                $("#resolution").html("<img src='" + logo + "' class='logo'>");
+                $("#resolution").addClass('logo-container');
+            }
+            else {
+                // Apply random background color class (.pink, .yellow, .lightblue, .darkblue) on load
+                var colors = ['pink', 'yellow', 'lightblue', 'darkblue'];
+                var color = colors[Math.floor(Math.random() * 4)];
+                $("body").addClass(color);
+            }
+        });
     </script>
 
 </body>
