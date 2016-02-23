@@ -15,12 +15,14 @@ class ResolutionView(TemplateView):
         template = 'resolutions.html'
 
         resolutions_count = Resolution.objects.count()
-        resolution_id = random.randint(1, resolutions_count)
 
-        try:
-            resolution = Resolution.objects.get(id=resolution_id)
-        except Exception:
-            resolution = "Failed to load resolution."
+        resolution = False
+        while not resolution:
+            try:
+                resolution_id = random.randint(1, resolutions_count)
+                resolution = Resolution.objects.get(id=resolution_id)
+            except Exception:
+                resolution = False
 
         context = {
             'resolution': resolution,
