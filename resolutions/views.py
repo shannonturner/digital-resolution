@@ -21,6 +21,12 @@ class ResolutionView(TemplateView):
             try:
                 resolution_id = random.randint(1, resolutions_count)
                 resolution = Resolution.objects.get(id=resolution_id)
+
+                # Don't show the same Resolution twice in a row
+                if request.session.get('resolution_id') == resolution_id:
+                    resolution = False
+                else:
+                    request.session['resolution_id'] = resolution_id
             except Exception:
                 resolution = False
 
